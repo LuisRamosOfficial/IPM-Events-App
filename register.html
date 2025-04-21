@@ -14,22 +14,32 @@
                 <h1 id="title">Socialize</h1>
             </a>
         </nav>
-        <div class="menu">
+        <form method="POST" action="/registering" class="menu">
             <p>Registrar</p>
-            <label><h5>Nome:</h5> <input id="nome" type="text"></label>
-            <label><h5>Data de Nascimento:</h5> <input id="nome" type="date"></label>
-            <label><h5>Email:</h5> <input type="text"></label>
-            <label><h5>Password:</h5> <input type="password"></label>
-            <label><h5>Género:</h5>  <select name="cars" id="cars">
+            <h5>Nome:</h5> 
+            <input id="nome" name="nome" type="text">
+            <h5>Data de Nascimento:</h5> 
+            <input id="nome" name="data_nascimento" type="date">
+            <h5>Email:</h5> 
+            <input type="text" name="email">
+            <h5>Password:</h5> 
+            <input type="password" name="password">
+            <h5>Género:</h5>  
+            <select name="genero">
                 <option value="Masculino">Masculino</option>
                 <option value="Feminino">Feminino</option>
 
               </select></label>
-              <a href="../home/">
-                <button>Registrar</button>
+              <a>
+                <button type="submit">Registrar</button>
             </a>
-        </div>
+        </form>
     </div>
-    <script defer src="../global.js"></script>
+    <script defer src="../global.js">
+
+
+
+
+    </script>
 </body>
 </html>

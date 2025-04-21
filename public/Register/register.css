@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 * {
+  overflow: hidden;
   color: var(--background);
   margin: 0;
   padding: 0%;
@@ -29,62 +31,57 @@ body div.wrapper nav {
   height: 10%;
 }
 body div.wrapper nav a {
-  opacity: 100%;
   text-decoration: none;
 }
 body div.wrapper nav h1 {
   color: rgb(255, 255, 255);
   font-size: 300%;
 }
-body div.wrapper div.menu {
-  margin-top: 20%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-body div.wrapper div.menu label {
-  margin-bottom: 10px;
+
+body div.wrapper form.menu {
   color: rgb(178, 115, 214);
   font-weight: 500;
   display: flex;
-  justify-content: space-between;
-  width: 80%;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-body div.wrapper div.menu label h5 {
-  width: 40%;
-}
-body div.wrapper div.menu label select {
+body div.wrapper form.menu select {
   width: 60%;
   color: black;
   outline: none;
-  margin-left: 10px;
   border: none;
   padding: 5px;
+  width: 70%;
+  padding: 0.5rem;
   background-color: rgb(216, 216, 216);
 }
-body div.wrapper div.menu label:nth-child(3) {
-  font-size: 0.8rem;
-}
-body div.wrapper div.menu label input {
+body div.wrapper form.menu input {
+  height: 1rem;
+  padding: 0.5rem;
   color: black;
   outline: none;
-  margin-left: 10px;
   border: none;
-  padding: 5px;
   background-color: rgb(216, 216, 216);
-  width: 60%;
+  width: 70%;
 }
-body div.wrapper div.menu p {
+body div.wrapper form.menu p {
   font-size: 1.5rem;
   font-weight: 600;
   color: rgb(178, 115, 214);
   margin-bottom: 25px;
+  margin-top: 25px;
 }
-body div.wrapper div.menu a {
+body div.wrapper form.menu h5 {
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+body div.wrapper form.menu a {
   width: 50%;
 }
-body div.wrapper div.menu button {
+body div.wrapper form.menu button {
   margin-top: 40px;
   outline: none;
   cursor: pointer;
@@ -99,10 +96,10 @@ body div.wrapper div.menu button {
   outline: 2px solid rgb(255, 255, 255);
   background-color: rgb(178, 115, 214);
 }
-body div.wrapper div.menu button:hover {
+body div.wrapper form.menu button:hover {
   background-color: #9c4cca;
 }
-body div.wrapper div.menu button:active {
+body div.wrapper form.menu button:active {
   background-color: rgb(255, 255, 255);
   color: rgb(178, 115, 214);
 }/*# sourceMappingURL=register.css.map */
