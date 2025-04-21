@@ -1,0 +1,15 @@
+{
+  "name": "prototipo-de-alta-fidelidade",
+  "version": "1.0.0",
+  "description": "Protitpo do trabalho de IPM 62719",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis Viegas, Ariel Braz, Neusa Silva",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
