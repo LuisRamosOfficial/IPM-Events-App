@@ -3,11 +3,6 @@
 body {
     div.wrapper { 
 
-        nav {
-            
-        }
-
-
         div.menu { 
             margin-top: 10%;
             height: 100%;
@@ -16,11 +11,50 @@ body {
             align-items: center;
             
             p {
-                font-size: 1.5rem;
+                font-size: 3vh;
                 font-weight: 600;
                 color: $foreground;
-                margin-bottom: 25px;
+                margin-bottom: 1rem;
             }
+            
+            img {
+                width: 20%;
+                border-radius: 30px;
+                border: 1px dashed rgb(0, 0, 0);
+            }
+            button#profile {
+                background-color: $background;
+                color: $foreground;
+                outline: 3px solid $foreground;
+                &:hover {
+                    outline: 3px solid darken($foreground, 15%);
+                    background-color: darken($background, 15%);
+                    color: darken($foreground, 15%);
+                }
+            }
+            button {
+                outline: none;
+                cursor: pointer;
+                &:hover {
+                    background-color: darken($foreground, 10%);
+                }
+                &:active {
+                    background-color: $background;
+                    color: $foreground;
+                    
+                }
+                margin-top: 1rem;
+                border: none;
+                width: 80%;
+                height: 8vh;
+                border-radius: 20px;
+                font-size: 1rem;
+                color: $background;
+                font-weight: 600;
+                outline: 2px solid $background;
+                background-color: $foreground;
+            }
+            
         }
     }
 }

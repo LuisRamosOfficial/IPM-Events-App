@@ -1,6 +1,6 @@
 const form = document.querySelector('form.menu');
 const message = document.getElementById('message');
-
+const user = JSON.parse(localStorage.getItem('loggeduser'))
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -12,15 +12,18 @@ const message = document.getElementById('message');
       return !value || value.trim() === '';
     });
 
-
+    
     if (emptyEntrys) {
-      message.innerHTML = "Please fill all the camps!!";
+      alert("Please fill all the camps!!")
       return;
     }
 
     const data = {
       mode: "login",
-      entry: formEntries,
+      entry: {
+        id: user.id,
+        ...formEntries,
+      },
   }
 
   await fetch('/loadUser', {
@@ -32,17 +35,16 @@ const message = document.getElementById('message');
   }).then(async (response) => {
     if (response.ok) {
       const jsonResponse = await response.json();
-      console.log(data)
     
 
       switch (jsonResponse.result) {
         case "invalidCredentials":
           message.innerHTML = "User not found!";
           break;
+
           
           case "success":
-            message.innerHTML = "User not found!";
-            
+            console.log(jsonResponse)
             localStorage.setItem("loggedUser", JSON.stringify(jsonResponse.user));
           window.location.pathname = "/home/"
           

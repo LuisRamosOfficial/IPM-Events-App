@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="./create.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialize</title>
+</head>
+<body>
+    <div class="wrapper">
+        <nav>
+            <a href="../">
+                <h1 id="title">Socialize</h1>
+            </a>
+        </nav>
+        <form class="menu">
+            <h1>Create Event:</h1>
+            <div class="entry">
+                <h5>Event title:</h5>
+                <input name="title"/>
+            </div>
+            <div class="entry">
+                <h5>Description:</h5>
+                <textarea name="description" rows="2"></textarea>
+            </div>
+            
+            <div class="entry">
+                <h5>Meeting time:</h5>
+                <div class="timehour-container">
+
+                    <input
+                        type="date"
+                        id="meetingdate"
+                        name="meetingdate"
+                        value="2025-01-01 "/>
+                    <input
+                        type="time"
+                        id="meetingtime"
+                        name="meetingtime"
+                        value="18:00"/>
+                </div>
+                </div>
+
+                <div class="entry">
+                    <h5>Thumbnail:</h5>
+                    <input name="thumbnail" id="thumbnail" type="file" accept="image/gif, image/jpeg, image/png" />
+                </div>
+                <img id="preview"/>
+                <button type="submit">Create</button>
+        </form>
+    </div>
+    <script defer src="../global.js"></script>
+    <script defer src="./createevent.js"></script>
+</body>
+</html>

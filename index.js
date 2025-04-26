@@ -37,11 +37,10 @@ app.get('/register', (req, res) => {
 app.post('/loadUser', (req, res) => {
  
   const data = req.body;
-  console.log(data)
   if (data.mode == "register") { // Verifica se tamos a registrar um usuario ou nao
     const { userName, birthday, email, password, gender } = data.entry;
 
-  const newUser = { id :uuidv4(), userName, birthday, email, password, gender };
+  const newUser = {  id :uuidv4(), pic: 'profile.jpg', userName, birthday, email, password, gender,  };
   
 
   //? Vamos agora verificar cada campo
@@ -96,7 +95,6 @@ app.post('/loadUser', (req, res) => {
 
   xlsx.writeFile(workbook, filePath);
 
-  console.log('Usuário salvo:', newUser);
   res.send({result: 'success'});
   }}
 
@@ -111,16 +109,16 @@ app.post('/loadUser', (req, res) => {
     }
   
     const workbook = xlsx.readFile(filePath);
-    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    const worksheet = workbook.Sheets["Users"];
     const users = xlsx.utils.sheet_to_json(worksheet);
-  
-    const foundUser = users.find(user => user.email === email && user.password === password);
+    console.log(users)
+    const foundUser = users.find(user => user.email == email && user.password == password);
   
     if (!foundUser) {
       return res.json({ result: "invalidCredentials" });
     }
 
-    return res.json({ result: "success", user: foundUser });
+    return res.json({ result: "success", user: foundUser});
 
 
 
@@ -145,6 +143,51 @@ app.get('/home', (req, res) => {
   res.sendFile('./home.html', {root: path.resolve()})
 })
 
+app.get('/createevent', (req, res) => {
+  res.sendFile('./createevent.html', {root: path.resolve()})
+})
+
+
+app.post('/newevent', (req, res) => {
+  const data = req.body;
+
+  if (data.mode == "register") {
+    const entry = data.entry;
+
+
+  const filePath = path.resolve('events.xlsx');
+
+  let workbook;
+  let worksheet;
+
+
+  if (fs.existsSync(filePath)) {
+    workbook = xlsx.readFile(filePath);
+    worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+    const currentEvent = xlsx.utils.sheet_to_json(worksheet);
+
+    currentEvent.push(entry);
+
+    const newSheet = xlsx.utils.json_to_sheet(currentEvent);
+    workbook.Sheets[workbook.SheetNames[0]] = newSheet;
+  } else {
+
+    const newSheet = xlsx.utils.json_to_sheet([entry]);
+    workbook = xlsx.utils.book_new();
+    xlsx.utils.book_append_sheet(workbook, newSheet, 'events');
+  }
+
+  xlsx.writeFile(workbook, filePath);
+
+  res.send({result: 'success'});
+  }}
+
+
+
+
+
+);
 
 
 

@@ -45,8 +45,44 @@ body div.wrapper div.menu {
   align-items: center;
 }
 body div.wrapper div.menu p {
-  font-size: 1.5rem;
+  font-size: 3vh;
   font-weight: 600;
   color: rgb(178, 115, 214);
-  margin-bottom: 25px;
+  margin-bottom: 1rem;
+}
+body div.wrapper div.menu img {
+  width: 20%;
+  border-radius: 30px;
+  border: 1px dashed rgb(0, 0, 0);
+}
+body div.wrapper div.menu button#profile {
+  background-color: rgb(255, 255, 255);
+  color: rgb(178, 115, 214);
+  outline: 3px solid rgb(178, 115, 214);
+}
+body div.wrapper div.menu button#profile:hover {
+  outline: 3px solid #9139c3;
+  background-color: #d9d9d9;
+  color: #9139c3;
+}
+body div.wrapper div.menu button {
+  outline: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  border: none;
+  width: 80%;
+  height: 8vh;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  outline: 2px solid rgb(255, 255, 255);
+  background-color: rgb(178, 115, 214);
+}
+body div.wrapper div.menu button:hover {
+  background-color: #9c4cca;
+}
+body div.wrapper div.menu button:active {
+  background-color: rgb(255, 255, 255);
+  color: rgb(178, 115, 214);
 }/*# sourceMappingURL=home.css.map */
