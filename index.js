@@ -77,7 +77,7 @@ app.post('/loadUser', (req, res) => {
 
     
     const isEmailAlreadyRegistered = currentUser.some(user => user.email === email);
-    if (emailDuplicado) {
+    if (isEmailAlreadyRegistered) {
       return res.send({result: "emailalreadyregistered"});
     }
   
@@ -99,8 +99,43 @@ app.post('/loadUser', (req, res) => {
   console.log('Usuário salvo:', newUser);
   res.send({result: 'success'});
   }}
+
+
+  else if (data.mode == "login") {
+    const {email, password} = data.entry
+
+    const filePath = path.resolve('users.xlsx');
+
+    if (!fs.existsSync(filePath)) {
+      return res.json({ result: "noUsers" });
+    }
+  
+    const workbook = xlsx.readFile(filePath);
+    const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    const users = xlsx.utils.sheet_to_json(worksheet);
+  
+    const foundUser = users.find(user => user.email === email && user.password === password);
+  
+    if (!foundUser) {
+      return res.json({ result: "invalidCredentials" });
+    }
+
+    return res.json({ result: "success", user: foundUser });
+
+
+
+
+  }
+
+
   else {
     res.send(req.body);
+
+
+
+
+
+
   }
 
   

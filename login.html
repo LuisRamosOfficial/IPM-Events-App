@@ -14,15 +14,20 @@
                 <h1 id="title">Socialize</h1>
             </a>
         </nav>
-        <div class="menu">
+        <form class="menu">
             <p>Iniciar Sessão</p>
-            <label><h5>Email:</h5> <input type="text"></label>
-            <label><h5>Password:</h5> <input type="password"></label>
-            <a href="../home/">
+            <h5>Email:</h5> 
+            <input name="email" type="text">
+            <h5>Password:</h5> 
+            <input name="password" type="password">
+
+            <h4 id="message"></h4>
+            <a>
                 <button>Entrar</button>
             </a>
-        </div>
+        </form>
     </div>
     <script defer src="../global.js"></script>
+    <script defer src="./login.js"></script>
 </body>
 </html>

@@ -26,5 +26,12 @@
         </div>
     </div>
     <script defer src="global.js"></script>
+    <script>
+        const user = localStorage.getItem('loggedUser');
+
+        if (user) {
+            window.location.pathname = "/home/"
+        } 
+    </script>
 </body>
 </html>

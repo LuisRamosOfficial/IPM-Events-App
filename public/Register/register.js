@@ -11,6 +11,7 @@ const message = document.getElementById('message');
     const emptyEntrys = Object.entries(formEntries).some(([key, value]) => {
       return !value || value.trim() === '';
     });
+    
 
     if (emptyEntrys) {
       message.innerHTML = "Please fill all the camps!!";
@@ -51,7 +52,11 @@ const message = document.getElementById('message');
             break;
           
         
-          default:
+          case "success":
+            localStorage.setItem("loggedUser", JSON.stringify(data.entry));
+            message.innerHTML = "Conta Criada!";
+            window.location.pathname = "/home/"
+            
             break;
         }
 
