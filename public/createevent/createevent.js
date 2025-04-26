@@ -1,8 +1,8 @@
 const fileInput = document.getElementById('thumbnail');
 const preview = document.getElementById('preview');
 const form = document.querySelector('form.menu');
-
-
+const user = localStorage.getItem('loggedUser')
+let thumbnail;
 
 
 fileInput.addEventListener('change', () => {
@@ -14,6 +14,7 @@ fileInput.addEventListener('change', () => {
     reader.onload = (e) => {
         preview.style.opacity = "100%";
       preview.src = e.target.result; 
+      thumbnail = e.target.result;
     };
 
     reader.readAsDataURL(file);
@@ -25,18 +26,20 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const formEntries = Object.fromEntries(formData.entries());
 
-    const emptyEntrys = Object.entries(formEntries).some(([key, value]) => {
-        return !value || value === '';
-    });
+    formEntries.thumbnail = thumbnail;
 
+ 
     
+    const data = {
+        userId: user.id,
+        ...formEntries
+    }
 
-
-
+    console.log(data)
     
-  await fetch('/loadUser', {
+  await fetch('/newevent', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

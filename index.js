@@ -3,13 +3,18 @@ import path from 'path';
 import fs from 'fs';
 import xlsx from 'xlsx';
 import {v4 as uuidv4} from 'uuid';
+import bodyParser from 'body-parser';
+
+
 
 
 const app = express()
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(express.static('public'))
 const port = 3000
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
+
 
 
 // Landing Page
@@ -149,10 +154,43 @@ app.get('/createevent', (req, res) => {
 
 
 app.post('/newevent', (req, res) => {
-  const data = req.body;
+  const entry = req.body;
+  const base64String = req.body.thumbnail;
+  const eventid = uuidv4();
+  
 
-  if (data.mode == "register") {
-    const entry = data.entry;
+
+  const matches = base64String.match(/^data:(.+);base64,(.+)$/);
+
+  if (!matches) {
+    return res.status(400).send('Invalid Image Format');
+  }
+  
+  const mimeType = matches[1]; 
+  const base64Data = matches[2];
+  
+
+  let extension = '';
+  if (mimeType === 'image/jpeg') extension = '.jpg';
+  else if (mimeType === 'image/png') extension = '.png';
+  else if (mimeType === 'image/gif') extension = '.gif';
+  else extension = '';
+  
+
+  const fileName = `img_${eventid}${extension}`;
+  const thumbPath = `./public/events/${fileName}`; 
+  
+  // Salva o arquivo
+  fs.writeFile(thumbPath, base64Data, 'base64', (err) => {
+    if (err) {
+      console.error('Erro ao salvar imagem:', err);
+      return res.status(500).send('Erro ao salvar imagem');
+    }
+  })
+
+
+  entry.thumbnail = `./public/events/${fileName}`;
+
 
 
   const filePath = path.resolve('events.xlsx');
@@ -181,7 +219,7 @@ app.post('/newevent', (req, res) => {
   xlsx.writeFile(workbook, filePath);
 
   res.send({result: 'success'});
-  }}
+  }
 
 
 
@@ -190,7 +228,19 @@ app.post('/newevent', (req, res) => {
 );
 
 
+app.get('/getevents', (req, res) => {
+  const filePath = path.resolve('events.xlsx');
 
+  if (!fs.existsSync(filePath)) {
+    return res.json({ result: "noEvents" });
+  }
+
+  const workbook = xlsx.readFile(filePath);
+  const worksheet = workbook.Sheets["events"];
+  const events = xlsx.utils.sheet_to_json(worksheet);
+
+  res.send(events)
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

@@ -8,7 +8,6 @@ if (!local) {
 }
 else {
     const user = JSON.parse(local)
-    console.log(user)
     screen.innerHTML = `<p>Olá ${user.userName}!</p>` 
     + `<img  src=\"../${user.pic}\"   />`
     + screen.innerHTML
@@ -19,3 +18,22 @@ else {
 function createEventPage() {
     window.location.pathname = '/createevent/'
 }
+async function getEvents () {
+
+
+await fetch('/getevents', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(async (response) => {
+    if (response.ok) {
+
+     const data = await response.json()
+     console.log(data)
+    }
+  })
+
+}
+
+getEvents()

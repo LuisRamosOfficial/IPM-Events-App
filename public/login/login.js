@@ -1,6 +1,6 @@
 const form = document.querySelector('form.menu');
 const message = document.getElementById('message');
-const user = JSON.parse(localStorage.getItem('loggeduser'))
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -20,10 +20,7 @@ const user = JSON.parse(localStorage.getItem('loggeduser'))
 
     const data = {
       mode: "login",
-      entry: {
-        id: user.id,
-        ...formEntries,
-      },
+      entry: formEntries,
   }
 
   await fetch('/loadUser', {
