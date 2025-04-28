@@ -9,8 +9,8 @@ import bodyParser from 'body-parser';
 
 
 const app = express()
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+app.use(bodyParser.json({ limit: '30mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '30mb' }));
 app.use(express.static('public'))
 const port = 3000
 app.use(express.json())
@@ -147,6 +147,9 @@ app.post('/loadUser', (req, res) => {
 app.get('/home', (req, res) => {
   res.sendFile('./home.html', {root: path.resolve()})
 })
+app.get('/explore', (req, res) => {
+  res.sendFile('./explore.html', {root: path.resolve()})
+})
 
 app.get('/createevent', (req, res) => {
   res.sendFile('./createevent.html', {root: path.resolve()})
@@ -156,7 +159,10 @@ app.get('/createevent', (req, res) => {
 app.post('/newevent', (req, res) => {
   const entry = req.body;
   const base64String = req.body.thumbnail;
-  const eventid = uuidv4();
+  const event = {
+    id: uuidv4(),
+    ...entry
+  };
   
 
 
@@ -177,7 +183,7 @@ app.post('/newevent', (req, res) => {
   else extension = '';
   
 
-  const fileName = `img_${eventid}${extension}`;
+  const fileName = `img_${event.id}${extension}`;
   const thumbPath = `./public/events/${fileName}`; 
   
   // Salva o arquivo
@@ -189,7 +195,7 @@ app.post('/newevent', (req, res) => {
   })
 
 
-  entry.thumbnail = `./public/events/${fileName}`;
+  event.thumbnail = `./public/events/${fileName}`;
 
 
 
@@ -205,13 +211,13 @@ app.post('/newevent', (req, res) => {
 
     const currentEvent = xlsx.utils.sheet_to_json(worksheet);
 
-    currentEvent.push(entry);
+    currentEvent.push(event);
 
     const newSheet = xlsx.utils.json_to_sheet(currentEvent);
     workbook.Sheets[workbook.SheetNames[0]] = newSheet;
   } else {
 
-    const newSheet = xlsx.utils.json_to_sheet([entry]);
+    const newSheet = xlsx.utils.json_to_sheet([event]);
     workbook = xlsx.utils.book_new();
     xlsx.utils.book_append_sheet(workbook, newSheet, 'events');
   }
@@ -242,6 +248,16 @@ app.get('/getevents', (req, res) => {
   res.send(events)
 })
 
+
+
+app.get('/event/:event', (req,res) => {
+
+  const eventID = req.params.id;
+
+
+
+  res.send('eventid')
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

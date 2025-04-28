@@ -18,22 +18,7 @@ else {
 function createEventPage() {
     window.location.pathname = '/createevent/'
 }
-async function getEvents () {
 
-
-await fetch('/getevents', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(async (response) => {
-    if (response.ok) {
-
-     const data = await response.json()
-     console.log(data)
-    }
-  })
-
+function explorePage() {
+    window.location.pathname = '/explore/'
 }
-
-getEvents()

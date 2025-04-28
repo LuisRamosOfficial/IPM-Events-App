@@ -1,0 +1,82 @@
+@import "../global";
+
+body {
+    div.wrapper { 
+
+        div.menu { 
+            height: 85%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30%;
+            h2 {
+                font-size: 3vh;
+                font-weight: 600;
+                color: $foreground;
+                margin-bottom: 1rem;
+            }
+
+            div.eventlist {
+                padding-top: 0.3rem;
+                overflow-y: auto;
+                width: 100%;
+                padding: 0.2rem;
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                
+                height: 100%;
+                
+                div.event {
+                    &:hover {
+                        transform: scale(1.02);
+                    }
+                    background-color: black;
+                    color: white;
+                    cursor: pointer;
+                    transition: transform 200ms ease-out;
+                    margin-bottom: 1rem;
+                    width: 80%;
+                    min-height: 12rem;
+                    max-height: 12rem;
+                    border-radius: 20px;
+                    outline: 1px solid black;
+                    img {
+                        width: 100%;
+                        background-color: rgba(0, 0, 0, 0.515);
+                        height: 70%;
+                        object-fit: cover;
+                    }
+                    &:last-child {
+                        margin-bottom: 7rem;
+                    }
+                    div.eventtext {
+                       
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+                       
+                    }
+                    
+                    p {
+                        &:first-child {
+                            flex: 0 0 100%;
+                            margin-bottom: 0.2rem;
+                        }
+                        
+                        text-align: center;
+                        font-size: 0.7rem;
+                         
+                    }
+                    p.eventtime {
+                        flex: 0 0 35%
+                    }
+                    p.eventlocation {
+                        flex: 0 0 65%
+                    }
+                }
+            }
+        }
+    }
+}

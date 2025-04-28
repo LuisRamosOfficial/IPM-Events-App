@@ -34,8 +34,9 @@ body {
             display: grid;
             place-items: center;
             background-color: $foreground;
+            position: fixed;
             
-            width: 100%;
+            width: 1px;
             height: 10%;
             a {
                 text-decoration: none;
@@ -47,7 +48,12 @@ body {
 
             
         }
-
+        div.menu {
+            margin-top: 20%;
+        }
+        form.menu {
+            margin-top: 20%;
+        }
 
 
         

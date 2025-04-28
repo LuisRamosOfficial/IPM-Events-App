@@ -26,7 +26,8 @@ body div.wrapper nav {
   display: grid;
   place-items: center;
   background-color: rgb(178, 115, 214);
-  width: 100%;
+  position: fixed;
+  width: 1px;
   height: 10%;
 }
 body div.wrapper nav a {
@@ -35,4 +36,10 @@ body div.wrapper nav a {
 body div.wrapper nav h1 {
   color: rgb(255, 255, 255);
   font-size: 300%;
+}
+body div.wrapper div.menu {
+  margin-top: 20%;
+}
+body div.wrapper form.menu {
+  margin-top: 20%;
 }/*# sourceMappingURL=global.css.map */

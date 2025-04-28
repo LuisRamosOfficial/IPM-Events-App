@@ -37,7 +37,7 @@ form.addEventListener('submit', async (e) => {
         ...formEntries
     }
 
-    console.log(data)
+    
     
   await fetch('/newevent', {
     method: 'POST',

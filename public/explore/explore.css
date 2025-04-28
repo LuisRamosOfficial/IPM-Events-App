@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
+* {
+  overflow: hidden;
+  color: var(--background);
+  margin: 0;
+  padding: 0%;
+  font-family: "Lexend", sans-serif;
+}
+
+body {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(37, 37, 37);
+}
+body div.wrapper {
+  aspect-ratio: 195/422;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.405);
+  height: 90vh;
+}
+body div.wrapper nav {
+  border-bottom: 2px solid rgb(255, 255, 255);
+  display: grid;
+  place-items: center;
+  background-color: rgb(178, 115, 214);
+  position: fixed;
+  width: 1px;
+  height: 10%;
+}
+body div.wrapper nav a {
+  text-decoration: none;
+}
+body div.wrapper nav h1 {
+  color: rgb(255, 255, 255);
+  font-size: 300%;
+}
+body div.wrapper div.menu {
+  margin-top: 20%;
+}
+body div.wrapper form.menu {
+  margin-top: 20%;
+}
+
+body div.wrapper div.menu {
+  height: 85%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30%;
+}
+body div.wrapper div.menu h2 {
+  font-size: 3vh;
+  font-weight: 600;
+  color: rgb(178, 115, 214);
+  margin-bottom: 1rem;
+}
+body div.wrapper div.menu div.eventlist {
+  padding-top: 0.3rem;
+  overflow-y: auto;
+  width: 100%;
+  padding: 0.2rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+body div.wrapper div.menu div.eventlist div.event {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: transform 200ms ease-out;
+  margin-bottom: 1rem;
+  width: 80%;
+  min-height: 12rem;
+  max-height: 12rem;
+  border-radius: 20px;
+  outline: 1px solid black;
+}
+body div.wrapper div.menu div.eventlist div.event:hover {
+  transform: scale(1.02);
+}
+body div.wrapper div.menu div.eventlist div.event img {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.515);
+  height: 70%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body div.wrapper div.menu div.eventlist div.event:last-child {
+  margin-bottom: 7rem;
+}
+body div.wrapper div.menu div.eventlist div.event div.eventtext {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+body div.wrapper div.menu div.eventlist div.event p {
+  text-align: center;
+  font-size: 0.7rem;
+}
+body div.wrapper div.menu div.eventlist div.event p:first-child {
+  flex: 0 0 100%;
+  margin-bottom: 0.2rem;
+}
+body div.wrapper div.menu div.eventlist div.event p.eventtime {
+  flex: 0 0 35%;
+}
+body div.wrapper div.menu div.eventlist div.event p.eventlocation {
+  flex: 0 0 65%;
+}/*# sourceMappingURL=explore.css.map */
