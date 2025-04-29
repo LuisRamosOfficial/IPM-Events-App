@@ -18,7 +18,7 @@ async function getEvents () {
 
 
        data.forEach(e => {
-        eventlist.innerHTML += `<div onclick=\"goToEvent(${e.id})\" class="event">
+        eventlist.innerHTML += `<div data-id="${e.id}" class="event">
                     <img src=\"../${e.thumbnail.slice(9)}\" />
                     <div class="eventtext">
                         <p class="eventtitle">${e.title}</p>
@@ -31,12 +31,20 @@ async function getEvents () {
       }
     })
   
+
+
+    const events = document.getElementsByClassName("event")
+    console.log(events)
+
+    Array.from(events).forEach(e => {
+      e.addEventListener('click', () => {
+        
+        window.location.pathname = `event/${e.getAttribute('data-id')}/`;
+      })
+    })
   }
   
   getEvents()
 
 
 
-function goToEvent(id) {
-  window.location.pathname = "/event/" + id + '/';
-}

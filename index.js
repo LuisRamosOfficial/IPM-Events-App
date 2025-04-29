@@ -252,12 +252,37 @@ app.get('/getevents', (req, res) => {
 
 app.get('/event/:event', (req,res) => {
 
-  const eventID = req.params.id;
+  const eventID = req.params.event;
+
+  const EventsPath = path.resolve('events.xlsx');
+
+  if (!fs.existsSync(EventsPath)) {
+    return res.json({ result: "noEvents" });
+  }
+
+  const workbook = xlsx.readFile(EventsPath);
+  const worksheet = workbook.Sheets["events"];
+  const events = xlsx.utils.sheet_to_json(worksheet);
+  const event = events.find(e => e.id == eventID);
 
 
+  const filePath = path.resolve('event.html');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      res.status(500).send('Erro ao carregar o arquivo.');
+    } else {
+      let modifiedHTML;
+      modifiedHTML =  data.replace('{{eventID}}', eventID);
+      for (let key in event) {
+        modifiedHTML = modifiedHTML.replace("{{event"+ key +"}}", event[key])
+        
+      }
+      res.send(modifiedHTML);
+    }
+  });
+});
 
-  res.send('eventid')
-})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
