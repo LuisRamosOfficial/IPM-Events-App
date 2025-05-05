@@ -195,7 +195,7 @@ app.post('/newevent', (req, res) => {
   })
 
 
-  event.thumbnail = `./public/events/${fileName}`;
+  event.thumbnail = `./events/${fileName}`;
 
 
 

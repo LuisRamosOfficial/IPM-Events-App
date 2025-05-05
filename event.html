@@ -10,13 +10,22 @@
 <body>
     <div class="wrapper">
         <nav>
-            <a href="../">
+            <a href="../../">
                 <h1 id="title">Socialize</h1>
             </a>
         </nav>
         <form class="menu">
             <h1>{{eventtitle}}</h1>
+            <img src="../../../{{eventthumbnail}}"/>
+            <p class="date">{{eventmeetingdate}} - {{eventmeetingtime}}</p>
+            <p class="date">{{eventlocation}}</p>
+            <p class="description"> {{eventdescription}} </p>
+
+            <button>Participar</button>
         </form>
+        <footer onclick="footer()">
+            <img src="../../homebutton.svg"/>
+        </footer>
     </div>
     <script defer src="../../global.js"></script>
     <script defer src="../event.js"></script>

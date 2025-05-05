@@ -19,7 +19,7 @@ async function getEvents () {
 
        data.forEach(e => {
         eventlist.innerHTML += `<div data-id="${e.id}" class="event">
-                    <img src=\"../${e.thumbnail.slice(9)}\" />
+                    <img src=\"../${e.thumbnail}\" />
                     <div class="eventtext">
                         <p class="eventtitle">${e.title}</p>
                         <p class="eventtime">${e.meetingdate} ${e.meetingtime}</p>

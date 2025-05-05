@@ -10,3 +10,7 @@ setInterval(() => {
 
 
 }, 1)
+
+function footer() {
+    window.location.pathname = ''
+}

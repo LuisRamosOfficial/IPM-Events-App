@@ -17,6 +17,7 @@ body {
 }
 body div.wrapper {
   aspect-ratio: 195/422;
+  position: relative;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.405);
   height: 90vh;
@@ -42,4 +43,21 @@ body div.wrapper div.menu {
 }
 body div.wrapper form.menu {
   margin-top: 20%;
+}
+body div.wrapper footer {
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  background-color: white;
+  bottom: 0;
+  left: 0;
+  padding-bottom: 0.4rem;
+  padding-top: 0.4rem;
+  right: 0;
+  height: 6%;
+}
+body div.wrapper footer img {
+  max-height: 100%;
+  filter: invert(55%) sepia(54%) saturate(873%) hue-rotate(225deg) brightness(90%) contrast(84%);
 }/*# sourceMappingURL=global.css.map */
